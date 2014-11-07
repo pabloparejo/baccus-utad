@@ -15,12 +15,30 @@
         android:text="@string/hello_world" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/wineImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="32dp"
         android:src="@drawable/vegaval" />
+
+    <Button
+        android:id="@+id/btn_change_bembibre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView1"
+        android:onClick="changeImageToBembibre"
+        android:text="Bembibre" />
+
+    <Button
+        android:id="@+id/btn_change_vegaval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btn_change_bembibre"
+        android:layout_alignTop="@+id/wineImage"
+        android:onClick="changeImageToVegaval"
+        android:text="Vegaval" />
 
 </RelativeLayout>
