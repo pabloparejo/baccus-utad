@@ -14,13 +14,12 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
     }
     
-    public void changeImageToBembibre(View v){
+    public void changeImage(View v){
     	ImageView wineImage = (ImageView) findViewById(R.id.wineImage);
-        wineImage.setImageResource(R.drawable.bembibre);
-    }
-    
-    public void changeImageToVegaval(View v){
-    	ImageView wineImage = (ImageView) findViewById(R.id.wineImage);
-        wineImage.setImageResource(R.drawable.vegaval);
+    	if (v.getId() == R.id.btn_change_bembibre) {
+    		wineImage.setImageResource(R.drawable.bembibre);
+		}else if (v.getId() == R.id.btn_change_vegaval) {
+			wineImage.setImageResource(R.drawable.vegaval);
+		}
     }
 }
