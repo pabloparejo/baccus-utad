@@ -30,7 +30,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/textView1"
         android:onClick="changeImage"
-        android:text="Bembibre" />
+        android:text="@string/bembibre" />
 
     <Button
         android:id="@+id/btn_change_vegaval"
@@ -39,6 +39,6 @@
         android:layout_alignRight="@+id/btn_change_bembibre"
         android:layout_alignTop="@+id/wineImage"
         android:onClick="changeImage"
-        android:text="Vegaval" />
+        android:text="@string/vegaval" />
 
 </RelativeLayout>
