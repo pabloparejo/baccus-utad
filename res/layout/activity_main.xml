@@ -15,9 +15,11 @@
         android:layout_height="200dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:adjustViewBounds="false"
+        android:background="@android:color/white"
         android:contentDescription="@string/wine_description"
-        android:scaleType="fitStart"
+        android:scaleType="centerInside"
         android:src="@drawable/vegaval" />
 
     <TextView
@@ -49,13 +51,18 @@
         android:text="TextView"
         android:textColor="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/text_wine_rating"
+    <RatingBar
+        android:id="@+id/wine_rating"
+        style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_wine_winehouse"
         android:layout_toRightOf="@+id/wineImage"
-        android:text="TextView"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:progressBackgroundTint="@android:color/darker_gray"
+        android:progressTint="@android:color/white"
+        android:stepSize="1"
         android:textColor="#FFFFFF" />
 
     <ScrollView
@@ -87,9 +94,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/wineImage"
-        android:layout_alignLeft="@+id/text_wine_rating"
+        android:layout_alignLeft="@+id/wine_rating"
         android:layout_alignRight="@+id/scroll_view"
-        android:layout_below="@+id/text_wine_rating"
+        android:layout_below="@+id/wine_rating"
         android:orientation="vertical" >
 
     </LinearLayout>

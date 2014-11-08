@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.utad.baccus.models.WineModel;
@@ -35,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
         TextView wineName = (TextView) findViewById(R.id.text_wine_name);
         TextView wineType = (TextView) findViewById(R.id.text_wine_type);
         TextView wineWinehouse = (TextView) findViewById(R.id.text_wine_winehouse);
-        TextView wineRating = (TextView) findViewById(R.id.text_wine_rating);
+        RatingBar wineRating = (RatingBar) findViewById(R.id.wine_rating);
         
         LinearLayout grapesContainer = (LinearLayout) findViewById(R.id.grapes);
         
@@ -45,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
         wineName.setText(vegaval.getName());
         wineType.setText(vegaval.getType());
         wineWinehouse.setText(vegaval.getWinehouse());
-        wineRating.setText(String.format("%d", vegaval.getRating()));
+        wineRating.setRating(vegaval.getRating());
         
         for (String grape : vegaval.getGrapes()) {
 			TextView text = new TextView(this);
