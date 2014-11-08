@@ -7,5 +7,9 @@
     <string name="vegaval">Cambiar a Vegaval</string>
     <string name="bembibre">Cambiar a Bembibre</string>
     <string name="wine_description">Una imagen de un vino</string>
+    <string name="name">Nombre:</string>
+    <string name="type">Tipo:</string>
+    <string name="winehouse">Bodega:</string>
+    <string name="rating">Puntuación:</string>
 
 </resources>
