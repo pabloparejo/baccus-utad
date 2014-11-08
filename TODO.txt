@@ -1,0 +1,3 @@
+- Hacer tamaño de imagen relaticvo al tamaño de la imagen
+- Mejorar diseño de espacio
+- Poner título a las uvas
