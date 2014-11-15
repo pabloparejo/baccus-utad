@@ -6,14 +6,22 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-public class WebActivity extends Activity {
+public class WebActivity extends ActionBarActivity {
 
+	public static final String EXTRA_URL = "com.utad.baccus.controller.EXTRA_URL";
 	private WineModel vegaval = null;
+	private WebView mBrowser = null;
+	private static final String CURRENT_URL = "CURRENT_URL";
+	private static final int MENU_RELOAD = 0;
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -21,18 +29,16 @@ public class WebActivity extends Activity {
 		setContentView(R.layout.activity_web);
 		
 		// Accedo a las vistas
+		mBrowser = (WebView) findViewById(R.id.browser);
 		final ProgressBar loading = (ProgressBar) findViewById(R.id.loading);
-		WebView browser = (WebView) findViewById(R.id.browser);
 		
 		
-		// Creo el modelo
-		String ipsum = "Lorem fistrum ese hombree tiene musho peligro a wan te va a hasé pupitaa fistro quietooor qué dise usteer mamaar amatomaa. Ese que llega va usté muy cargadoo amatomaa no puedor llevame al sircoo no puedor. Ese hombree a peich apetecan la caidita me cago en tus muelas apetecan te voy a borrar el cerito caballo blanco caballo negroorl no te digo trigo por no llamarte Rodrigor ese que llega se calle ustée. Qué dise usteer ese pedazo de me cago en tus muelas torpedo torpedo no te digo trigo por no llamarte Rodrigor. Apetecan ese pedazo de por la gloria de mi madre hasta luego Lucas ese que llega hasta luego Lucas diodenoo hasta luego Lucas te voy a borrar el cerito quietooor. A peich sexuarl no te digo trigo por no llamarte Rodrigor de la pradera la caidita llevame al sircoo. Me cago en tus muelas benemeritaar sexuarl la caidita ese pedazo de te voy a borrar el cerito tiene musho peligro a peich pupita. \r\n A peich ahorarr apetecan sexuarl hasta luego Lucas papaar papaar no puedor de la pradera. Mamaar ese hombree llevame al sircoo diodeno diodenoo te voy a borrar el cerito condemor ahorarr me cago en tus muelas sexuarl al ataquerl. Se calle ustée se calle ustée llevame al sircoo caballo blanco caballo negroorl. A wan fistro fistro amatomaa a peich de la ";
-	    vegaval = new WineModel(R.drawable.vegaval, 4, ipsum,"Vegaval", "Tinto", "http://www.vegaval.com/es/", "Miguel Calatayud");
-	    vegaval.addGrape("Mencía");
-	    vegaval.addGrape("Garnacho");
+		// Recojo el modelo
+		String url = getIntent().getStringExtra(EXTRA_URL);
+		
 	    
 	    // Fijamos el webview como navegador
-	    browser.setWebViewClient(new WebViewClient(){
+	    mBrowser.setWebViewClient(new WebViewClient(){
 			@Override
 			public void onPageStarted(WebView view, String url, Bitmap favicon) {
 				super.onPageStarted(view, url, favicon);
@@ -47,9 +53,43 @@ public class WebActivity extends Activity {
 			}
 	    	
 	    });
-		
-	    browser.loadUrl(vegaval.getURL());
-		
+	    
+	    // Cargamos la página
+	    if (savedInstanceState != null && savedInstanceState.containsKey(CURRENT_URL)) {
+	    	mBrowser.loadUrl(savedInstanceState.getString(CURRENT_URL));
+		}else{
+			mBrowser.loadUrl(url);
+		}
 	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		String currentURL = mBrowser.getUrl();
+		outState.putString(CURRENT_URL, currentURL);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.main, menu);
+		MenuItem reload = menu.add(Menu.NONE, MENU_RELOAD, 0, "Recargar"); //Habría que poner un id
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		boolean defaultValue = super.onOptionsItemSelected(item);
+		
+		if (item.getItemId() == MENU_RELOAD) {
+			mBrowser.reload();
+			return true;
+		}else{
+			return defaultValue;
+		}
+	}
+	
+	
+	
 	
 }
