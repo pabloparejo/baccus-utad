@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.utad.baccus.models.WineModel;
 
 
-public class MainActivity extends ActionBarActivity {
+public class WineActivity extends ActionBarActivity {
 	
 	private WineModel mWine = null;
 	private ImageView mWineImage = null;

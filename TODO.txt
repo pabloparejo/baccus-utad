@@ -1,4 +1,7 @@
 - Hacer tamaño de imagen relaticvo al tamaño de la imagen
 - Mejorar diseño de espacio
 - Poner título a las uvas
+
 - Manejar giro de la pantalla para que mantenga la configuración
+- Hacer WineActivity estandar y serializable
+- Crear un modelo para una bodega(lista) de vinos
